@@ -1,0 +1,7 @@
+.DS_Store
+.build/
+*.app/
+*.zip
+*.log
+assets/launchd-manager-icon-1024.png
+
