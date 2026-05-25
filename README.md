@@ -34,6 +34,28 @@
 
 构建后会生成可双击打开的 `launchd 定时任务管理.app`，也会在 GitHub Release 中提供对应压缩包。
 
+## macOS 提示 App 已损坏
+
+如果从 GitHub Release 下载后，macOS 提示：
+
+```text
+“launchd 定时任务管理.app”已损坏，无法打开。你应该将它移到废纸篓。
+```
+
+通常不是文件真的损坏，而是 macOS Gatekeeper 给未签名应用加了隔离属性。可以在终端执行：
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/launchd 定时任务管理.app"
+```
+
+如果 app 不在 `/Applications`，把命令里的路径换成实际位置，例如：
+
+```bash
+xattr -dr com.apple.quarantine "/Users/你的用户名/Downloads/launchd 定时任务管理.app"
+```
+
+然后重新双击打开。也可以右键点击 app，选择“打开”，再在系统提示里确认打开。
+
 ## 说明
 
 - 只管理当前用户的 LaunchAgents
